@@ -42,3 +42,13 @@ aiwolf_talk_analyzer.pyに移動
 
 ### text.py
 テスト用プログラム
+
+## 参考資料
+Lark基本解説 (Python, Larkでシェルっぽいやつをつくる)
+https://qiita.com/Hoshimi/items/fccd42ac6b1f005b46e5
+
+Extended Backus–Naur form
+https://www.wikiwand.com/en/Extended_Backus%E2%80%93Naur_form
+
+Lark
+https://lark-parser.readthedocs.io/en/latest/json_tutorial.html
