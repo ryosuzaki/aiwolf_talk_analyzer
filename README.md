@@ -28,12 +28,17 @@ larkを使って構文解析を行ってます。
 例えば、estimateのノードで何か処理を行うにはここに書く。
 ![image](https://user-images.githubusercontent.com/71608299/156884677-fa4873e9-8364-4d31-82c4-64b9d26d8fef.png)
 
-
-### aiwolf_talk_grammer.txt
-文法ファイル
+文法記述部分
 これを使って構文解析を行う。
 http://aiwolf.org/control-panel/wp-content/uploads/2019/02/protocol_2019_3_6m.pdf
 をベースに書いています。
+![image](https://user-images.githubusercontent.com/71608299/156893311-42457286-7334-49c8-825a-e583a7bcef75.png)
+
+
+### aiwolf_talk_grammer.txt
+文法ファイル
+aiwolf_talk_analyzer.pyに移動
+多分こっちでやった方が編集しやすい
 
 ### text.py
 テスト用プログラム
