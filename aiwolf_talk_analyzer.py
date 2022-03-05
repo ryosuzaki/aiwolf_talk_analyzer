@@ -1,9 +1,7 @@
 #https://github.com/lark-parser/lark
 #pip install lark
+from lib2to3.pgen2 import grammar
 from lark import Lark, Transformer
-
-grammar = open('aiwolf_talk_grammer.txt').read()
-parser = Lark(grammar, start='sentence')
 
 #japanese
 #http://aiwolf.org/control-panel/wp-content/uploads/2019/02/protocol_2019_3_6m.pdf
@@ -93,6 +91,80 @@ class TreeToDict(Transformer):
 
 
 def talk2dict(talk):
+    #grammar = open('aiwolf_talk_grammer.txt').read()
+    parser = Lark(grammar, start='sentence')
     tree = parser.parse(talk)
     #print(tree.pretty())
     return TreeToDict().transform(tree)
+
+grammar=r"""
+//sentence
+?sentence:estimate|comingout|divination|guard|vote|attack|divined|identified|guarded|voted|attacked|agree|disagree|over|skip|request|inquire|because|day|o_not|o_and|o_or|o_xor
+
+//1 word
+//species
+species:human|werewolf
+
+human:"HUMAN"
+werewolf:"WEREWOLF"
+
+//role
+role: villager|seer|medium|bodyguard|possessed|werewolf
+
+villager:"VILLAGER"
+seer:"SEER"
+medium:"MEDIUM"
+bodyguard:"BODYGUARD"
+possessed:"POSSESSED"
+
+//target,subject
+target:agent|any
+subject:agent|any|unspec
+
+agent:"Agent[" ["0"] int "]"
+any:"ANY"
+unspec:"UNSPEC"
+
+
+//2 sentence
+estimate:[subject] "ESTIMATE" target role
+comingout:[subject] "COMINGOUT" target role
+
+divination:[subject] "DIVINATION" target
+guard:[subject] "GUARD" target
+vote:[subject] "VOTE" target
+attack:[subject] "ATTACK" target
+
+divined:[subject] "DIVINED" target [species]
+identified:[subject] "IDENTIFIED" target [species]
+guarded:[subject] "GUARDED" target [species]
+voted:[subject] "VOTED" target [species]
+attacked:[subject] "ATTACKED" target [species]
+
+agree:[subject] "AGREE" int
+disagree:[subject] "DISAGREE" int
+
+over:"OVER"
+skip:"SKIP"
+
+
+//3 operator
+request:[subject] "REQUEST" target "(" sentence ")"
+inquire:[subject] "INQUIRE" target "(" sentence ")"
+
+because:[subject] "BECAUSE" "(" sentence ")" "(" sentence ")"
+
+day:[subject] "DAY" int "(" sentence ")"
+
+//Prefix with o_ because it covers a reserved word. o means operator.
+o_not:[subject] "NOT" ( "(" sentence ")" )
+o_and:[subject] "AND" ( "(" sentence ")" )+
+o_or:[subject] "OR" ( "(" sentence ")" )+
+o_xor:[subject] "XOR" ( "(" sentence ")" )+
+
+
+int: INT
+%import common.INT
+%import common.WS
+%ignore WS
+"""
