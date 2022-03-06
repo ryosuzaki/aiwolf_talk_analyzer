@@ -10,7 +10,7 @@ http://aiwolf.org/
  pip install lark
  ```
 
-2. test.pyを実行する。talkに解析したい文を入れる。
+2. example.pyを実行する。talkに解析したい文を入れる。
 
 ![image](https://user-images.githubusercontent.com/71608299/156884160-32be3689-9f3e-488a-a15b-61b2a03198d9.png)
 
