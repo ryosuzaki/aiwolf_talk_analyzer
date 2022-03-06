@@ -1,6 +1,5 @@
 #https://github.com/lark-parser/lark
 #pip install lark
-from lib2to3.pgen2 import grammar
 from lark import Lark, Transformer
 
 #japanese
@@ -91,10 +90,15 @@ class TreeToDict(Transformer):
 
 
 def talk2dict(talk):
-    #grammar = open('aiwolf_talk_grammer.txt').read()
-    parser = Lark(grammar, start='sentence')
-    tree = parser.parse(talk)
+    tree = talk2Tree(talk)
     #print(tree.pretty())
+    return tree2dict(tree)
+
+def talk2Tree(talk):
+    parser=Lark(grammar, start='sentence')
+    return parser.parse(talk)
+
+def tree2dict(tree):
     return TreeToDict().transform(tree)
 
 grammar=r"""
