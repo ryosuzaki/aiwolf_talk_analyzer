@@ -21,6 +21,11 @@ http://aiwolf.org/
 
 
 ## ファイル構成
+
+aiwolf_talk_analyzer.py　必須
+aiwolf_talk_grammer.txt　文法のみ　無くても動く
+text.py　使用例　無くても動く
+
 ### aiwolf_talk_analyzer.py
 https://github.com/lark-parser/lark
 larkを使って構文解析を行ってます。
