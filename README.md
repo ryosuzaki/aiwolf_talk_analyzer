@@ -22,13 +22,11 @@ http://aiwolf.org/
 
 ## ファイル構成
 
-aiwolf_talk_analyzer.py　必須
+aiwolf_talk_analyzer.py　
 
-aiwolf_talk_grammer.txt　文法のみ　無くても動く
+example.py　使用例　無くても動く
 
-text.py　使用例　無くても動く
-
-### aiwolf_talk_analyzer.py
+### aiwolf_talk_analyzer.py　必須
 https://github.com/lark-parser/lark
 larkを使って構文解析を行ってます。
 ノードで行う処理はこのファイルに加筆する。
@@ -41,14 +39,8 @@ http://aiwolf.org/control-panel/wp-content/uploads/2019/02/protocol_2019_3_6m.pd
 をベースに書いています。
 ![image](https://user-images.githubusercontent.com/71608299/156893311-42457286-7334-49c8-825a-e583a7bcef75.png)
 
-
-### aiwolf_talk_grammer.txt
-文法ファイル
-aiwolf_talk_analyzer.pyに移動
-多分こっちでやった方が編集しやすい
-
-### text.py
-テスト用プログラム
+### example.py
+使用例プログラム　無くても動く
 
 ## 参考資料
 Lark基本解説 (Python, Larkでシェルっぽいやつをつくる)
